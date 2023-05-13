@@ -1,37 +1,33 @@
 {
-    "name": "My YT Bookmarks",
-    "version": "0.1.0",
-    "description": "Saving timestamps in YT videos",
-    "permissions": ["storage", "tabs"],
-    "host_permissions": ["https://*.youtube.com/*"],
-    "background": {
-      "service_worker": "background.js"
+    "name": "Better Bulk Image Downloader",
+    "version": "0.0.1",
+    "description": "Queue images for download and download them all at once.",
+    "permissions": ["contextMenus", "storage", "downloads", "tabs"],
+    "icons": {
+      "16": "assets/icon.png"
     },
-    "content_scripts": [
-      {
-        "matches": ["https://*.youtube.com/*"],
-        "js": ["contentScript.js"]
-      }
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": [
-          "assets/bookmark.png",
-          "assets/play.png",
-          "assets/delete.png",
-          "assets/save.png"
-        ],
-        "matches": ["https://*.youtube.com/*"]
-      }
-    ],
+    "host_permissions": ["https://*/*"],
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
     "action": {
       "default_icon": {
-        "16": "assets/ext-icon.png",
-        "24": "assets/ext-icon.png",
-        "32": "assets/ext-icon.png"
+        "16": "assets/icon.png",
+        "24": "assets/icon.png",
+        "32": "assets/icon.png"
       },
-      "default_title": "My YT Bookmarks",
+      "default_title": "Better Bulk Image Downloader",
       "default_popup": "popup.html"
+    },
+    "commands": {
+      "download_all": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+D",
+          "mac": "MacCtrl+Shift+D"
+        },
+        "description": "Download all images"
+      }
     },
     "manifest_version": 3
 }
